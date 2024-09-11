@@ -21,5 +21,5 @@
 1. #### Context API
 2. #### Recoil
 3. #### Redux
-### 3. storybook으로 TDD환경에서 컴포넌트 테스팅하기
-### 4. Migration to TypeScript
+### 3. Code Splitting
+### 4. Server Side Rendering
