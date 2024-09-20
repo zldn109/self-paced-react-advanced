@@ -21,5 +21,6 @@
 1. #### Context API
 2. #### Recoil
 3. #### Redux
-### 3. Code Splitting
-### 4. Server Side Rendering
+### 3. Component Optimization
+### 4. Code Splitting
+### 5. Server Side Rendering
