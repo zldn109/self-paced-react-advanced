@@ -78,6 +78,7 @@ export default App;
 
 ## 🧙‍♀️ 진행 가이드
 - 진행시간 : 1시간 내에 완료하는 것을 목표로 합니다.
+- vscode 사용시 extension에서 `vscode-styled-components`를 설치해주세요.
 
 ## 🔗 참고 문서
 - [styled-components 공식문서](https://styled-components.com/docs)
