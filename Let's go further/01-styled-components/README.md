@@ -1,6 +1,7 @@
 # 01. styled-components를 적용해서 리팩토링하기
 
 ## 🎯 요구사항
+- 초록스터디-`self-paced-react`의 step5 코드를 가져와 스타일링하는 미션입니다.
 - styled-components 라이브러리를 이용해서 컴포넌트들에게 css를 입히고 스타일링 해보세요. 
 - styled-components를 왜 사용하는지, 별도의 css파일로 분리한 방법과 어떤 trade-off가 있는지 PR에 적어주세요.
   - (선택) 브라우저가 웹 페이지를 렌더링하는 구조와 과정에 대해서도 공부해보세요.
