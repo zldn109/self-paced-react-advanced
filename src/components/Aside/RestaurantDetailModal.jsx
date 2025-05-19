@@ -65,7 +65,7 @@ const RestaurantInfo = styled.div`
   margin-bottom: 24px;
 `;
 
-const TextBody = styled.div`
+const TextBody = styled.p`
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
