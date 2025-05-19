@@ -52,10 +52,6 @@ const RestaurantName = styled.h3`
   margin: 0;
 `;
 
-const RestaurantDistance = styled.p`
-  color: var(--primary-color);
-`;
-
 const RestaurantDescription = styled.p`
   display: -webkit-box;
 
