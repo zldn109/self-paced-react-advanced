@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
 
-const ModalOpen = styled.div`
+const ModalWrapper = styled.div`
   display: block;
 `;
 
@@ -130,7 +130,7 @@ function AddRestaurantModal({ onSubmitRestaurant, onCloseModal }) {
   const [description, setDescription] = useState("");
 
   return (
-    <ModalOpen>
+    <ModalWrapper>
       <ModalBackdrop onClick={() => onCloseModal()}></ModalBackdrop>
       <ModalContainer>
         <ModalTitle>새로운 음식점</ModalTitle>
@@ -202,7 +202,7 @@ function AddRestaurantModal({ onSubmitRestaurant, onCloseModal }) {
           </ButtonContainer>
         </form>
       </ModalContainer>
-    </ModalOpen>
+    </ModalWrapper>
   );
 }
 

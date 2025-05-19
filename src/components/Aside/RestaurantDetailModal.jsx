@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ModalOpen = styled.div`
+const ModalWrapper = styled.div`
   display: block;
 `;
 
@@ -77,7 +77,7 @@ function RestaurantDetailModal({
   onCloseModal,
 }) {
   return (
-    <ModalOpen>
+    <ModalWrapper>
       <ModalBackdrop onClick={() => onCloseModal()}></ModalBackdrop>
       <ModalContainer>
         <ModalTitle>{restaurantName}</ModalTitle>
@@ -91,7 +91,7 @@ function RestaurantDetailModal({
           </Button>
         </ButtonContainer>
       </ModalContainer>
-    </ModalOpen>
+    </ModalWrapper>
   );
 }
 
