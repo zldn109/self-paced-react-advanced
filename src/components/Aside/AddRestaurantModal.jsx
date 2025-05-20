@@ -110,18 +110,16 @@ const Button = styled.button`
 
   font-weight: 600;
   cursor: pointer;
-  &.secondary {
-    border: 1px solid var(--grey-300);
-    background: transparent;
-    color: var(--grey-300);
-  }
-  &.primary {
-    background: var(--primary-color);
-    color: var(--grey-100);
-    &:last-child {
-      margin-right: 0;
-    }
-  }
+
+  ${({ props }) =>
+    props === "primary" &&
+    css`
+      background: var(--primary-color);
+      color: var(--grey-100);
+      &:last-child {
+        margin-right: 0;
+      }
+    `}
 `;
 
 function AddRestaurantModal({ onSubmitRestaurant, onCloseModal }) {
@@ -196,7 +194,7 @@ function AddRestaurantModal({ onSubmitRestaurant, onCloseModal }) {
           </FormItem>
 
           <ButtonContainer>
-            <Button type="submit" className="primary">
+            <Button type="submit" props="primary">
               추가하기
             </Button>
           </ButtonContainer>

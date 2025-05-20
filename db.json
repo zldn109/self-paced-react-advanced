@@ -37,16 +37,22 @@
       "category": "기타"
     },
     {
-      "id": 1747401909998,
+      "id": "1747401909998",
       "category": "중식",
       "name": "ㅇㄴㄹ",
       "description": "ㄴㅇㄹ"
     },
     {
-      "id": 1747402283473,
+      "id": "1747402283473",
       "category": "중식",
       "name": "신지우",
       "description": "ㄴㅇㄹ"
+    },
+    {
+      "id": 1747716276207,
+      "category": "한식",
+      "name": "fd",
+      "description": ""
     }
   ]
 }
