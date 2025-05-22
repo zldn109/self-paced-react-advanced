@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { AppContext } from "../../contexts/AppContext";
+import { useContext } from "react";
 
 const Gnb = styled.header`
   display: flex;
@@ -32,15 +34,13 @@ const GnbButton = styled.button`
   }
 `;
 
-function Header({ openAddRestaurantModal }) {
+function Header() {
+  const { openAddModal } = useContext(AppContext);
+
   return (
     <Gnb>
       <GnbTitle>점심 뭐 먹지</GnbTitle>
-      <GnbButton
-        type="button"
-        aria-label="음식점 추가"
-        onClick={openAddRestaurantModal}
-      >
+      <GnbButton type="button" aria-label="음식점 추가" onClick={openAddModal}>
         <img src="/templates/add-button.png" alt="음식점 추가" />
       </GnbButton>
     </Gnb>

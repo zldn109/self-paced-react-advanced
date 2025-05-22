@@ -4,14 +4,15 @@ import MainContent from "./components/Main/MainContent";
 import AddRestaurantModal from "./components/Aside/AddRestaurantModal";
 import RestaurantDetailModal from "./components/Aside/RestaurantDetailModal";
 import { useState, useEffect } from "react";
+import { AppProvider } from "./contexts/AppContext";
 
 function App() {
-  const MODAL_TYPES = {
-    ADD: "add",
-    DETAIL: "detail",
-  };
+  // const MODAL_TYPES = {
+  //   ADD: "add",
+  //   DETAIL: "detail",
+  // };
 
-  const [modalTypeToOpen, setModalTypeToOpen] = useState(null);
+  // const [modalTypeToOpen, setModalTypeToOpen] = useState(null);
   const handleCloseModal = () => setModalTypeToOpen(null);
 
   const [clickedRestaurantInfo, setClickedRestaurantInfo] = useState(null);
@@ -52,16 +53,17 @@ function App() {
   };
   return (
     <>
-      <Header
-        openAddRestaurantModal={() => setModalTypeToOpen(MODAL_TYPES.ADD)}
-      />
+      <AppProvider>
+        <Header />
+      </AppProvider>
+
       <main>
         <MainContent
           onClickedDetailModal={handleClickedRestaurantInfo}
           restaurants={restaurants}
         />
       </main>
-      <aside>
+      {/* <aside>
         {modalTypeToOpen === "add" && (
           <AddRestaurantModal
             onSubmitRestaurant={handleUpdatedRestaurants}
@@ -75,7 +77,7 @@ function App() {
             onCloseModal={handleCloseModal}
           />
         )}
-      </aside>
+      </aside> */}
     </>
   );
 }
