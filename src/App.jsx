@@ -5,6 +5,8 @@ import AddRestaurantModal from "./components/Aside/AddRestaurantModal";
 import RestaurantDetailModal from "./components/Aside/RestaurantDetailModal";
 import { useState, useEffect } from "react";
 import { AppProvider } from "./contexts/AppContext";
+import { useContext } from "react";
+import { AppContext } from "./contexts/AppContext";
 
 function App() {
   // const MODAL_TYPES = {
@@ -13,71 +15,66 @@ function App() {
   // };
 
   // const [modalTypeToOpen, setModalTypeToOpen] = useState(null);
-  const handleCloseModal = () => setModalTypeToOpen(null);
+  // const handleCloseModal = () => setModalTypeToOpen(null);
 
-  const [clickedRestaurantInfo, setClickedRestaurantInfo] = useState(null);
-  const handleClickedRestaurantInfo = (name, description) => {
-    const restaurant = {
-      name,
-      description,
-    };
-    setClickedRestaurantInfo(restaurant);
-    setModalTypeToOpen(MODAL_TYPES.DETAIL);
-  };
+  // const [clickedRestaurantInfo, setClickedRestaurantInfo] = useState(null);
+  // const handleClickedRestaurantInfo = (name, description) => {
+  //   const restaurant = {
+  //     name,
+  //     description,
+  //   };
+  //   setClickedRestaurantInfo(restaurant);
+  //   setModalTypeToOpen(MODAL_TYPES.DETAIL);
+  // };
 
-  const [restaurants, setRestaurants] = useState([]);
+  // const [restaurants, setRestaurants] = useState([]);
 
-  const fetchRestaurants = async () => {
-    const response = await fetch("http://localhost:3000/restaurants");
-    const data = await response.json();
-    setRestaurants(data);
-  };
+  // const fetchRestaurants = async () => {
+  //   const response = await fetch("http://localhost:3000/restaurants");
+  //   const data = await response.json();
+  //   setRestaurants(data);
+  // };
 
-  const addNewRestaurant = async (restaurant) => {
-    const response = await fetch("http://localhost:3000/restaurants", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(restaurant),
-    });
-    const newRestaurant = await response.json();
-    return newRestaurant;
-  };
+  // const addNewRestaurant = async (restaurant) => {
+  //   const response = await fetch("http://localhost:3000/restaurants", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(restaurant),
+  //   });
+  //   const newRestaurant = await response.json();
+  //   return newRestaurant;
+  // };
 
-  useEffect(() => {
-    fetchRestaurants();
-  }, []);
+  // useEffect(() => {
+  //   fetchRestaurants();
+  // }, []);
 
-  const handleUpdatedRestaurants = async (restaurant) => {
-    const newRestaurant = await addNewRestaurant(restaurant);
-    setRestaurants((prev) => [...prev, newRestaurant]);
-  };
+  // const handleUpdatedRestaurants = async (restaurant) => {
+  //   const newRestaurant = await addNewRestaurant(restaurant);
+  //   setRestaurants((prev) => [...prev, newRestaurant]);
+  // };
   return (
     <>
       <AppProvider>
         <Header />
+        <main>
+          <MainContent />
+        </main>
+        <aside>
+          <ModalRenderer />
+        </aside>
       </AppProvider>
+    </>
+  );
+}
 
-      <main>
-        <MainContent
-          onClickedDetailModal={handleClickedRestaurantInfo}
-          restaurants={restaurants}
-        />
-      </main>
-      {/* <aside>
-        {modalTypeToOpen === "add" && (
-          <AddRestaurantModal
-            onSubmitRestaurant={handleUpdatedRestaurants}
-            onCloseModal={handleCloseModal}
-          />
-        )}
-        {modalTypeToOpen === "detail" && (
-          <RestaurantDetailModal
-            restaurantName={clickedRestaurantInfo.name}
-            restaurantDescription={clickedRestaurantInfo.description}
-            onCloseModal={handleCloseModal}
-          />
-        )}
-      </aside> */}
+function ModalRenderer() {
+  const { modalTypeToOpen } = useContext(AppContext);
+
+  return (
+    <>
+      {modalTypeToOpen === "add" && <AddRestaurantModal />}
+      {modalTypeToOpen === "detail" && <RestaurantDetailModal />}
     </>
   );
 }

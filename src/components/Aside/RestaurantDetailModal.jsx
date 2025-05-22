@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 
 const ModalWrapper = styled.div`
   display: block;
@@ -71,22 +73,20 @@ const TextBody = styled.p`
   font-weight: 400;
 `;
 
-function RestaurantDetailModal({
-  restaurantName,
-  restaurantDescription,
-  onCloseModal,
-}) {
+function RestaurantDetailModal() {
+  const { clickedRestaurantInfo, handleCloseModal } = useContext(AppContext);
+
   return (
     <ModalWrapper>
-      <ModalBackdrop onClick={() => onCloseModal()}></ModalBackdrop>
+      <ModalBackdrop onClick={() => handleCloseModal()}></ModalBackdrop>
       <ModalContainer>
-        <ModalTitle>{restaurantName}</ModalTitle>
+        <ModalTitle>{clickedRestaurantInfo.name}</ModalTitle>
         <RestaurantInfo>
-          <TextBody>{restaurantDescription}</TextBody>
+          <TextBody>{clickedRestaurantInfo.description}</TextBody>
         </RestaurantInfo>
 
         <ButtonContainer>
-          <Button className="primary" onClick={onCloseModal}>
+          <Button className="primary" onClick={handleCloseModal}>
             닫기
           </Button>
         </ButtonContainer>

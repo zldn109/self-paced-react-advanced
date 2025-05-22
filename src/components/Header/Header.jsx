@@ -35,12 +35,16 @@ const GnbButton = styled.button`
 `;
 
 function Header() {
-  const { openAddModal } = useContext(AppContext);
+  const { openAddRestaurantModal } = useContext(AppContext);
 
   return (
     <Gnb>
       <GnbTitle>점심 뭐 먹지</GnbTitle>
-      <GnbButton type="button" aria-label="음식점 추가" onClick={openAddModal}>
+      <GnbButton
+        type="button"
+        aria-label="음식점 추가"
+        onClick={openAddRestaurantModal}
+      >
         <img src="/templates/add-button.png" alt="음식점 추가" />
       </GnbButton>
     </Gnb>

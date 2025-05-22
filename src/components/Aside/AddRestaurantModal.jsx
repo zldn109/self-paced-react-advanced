@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 
 const ModalWrapper = styled.div`
   display: block;
@@ -122,14 +124,16 @@ const Button = styled.button`
     `}
 `;
 
-function AddRestaurantModal({ onSubmitRestaurant, onCloseModal }) {
+function AddRestaurantModal() {
+  const { handleUpdatedRestaurants, handleCloseModal } = useContext(AppContext);
+
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
   return (
     <ModalWrapper>
-      <ModalBackdrop onClick={() => onCloseModal()}></ModalBackdrop>
+      <ModalBackdrop onClick={() => handleCloseModal()}></ModalBackdrop>
       <ModalContainer>
         <ModalTitle>새로운 음식점</ModalTitle>
         <form
@@ -143,8 +147,8 @@ function AddRestaurantModal({ onSubmitRestaurant, onCloseModal }) {
               description,
             };
 
-            onSubmitRestaurant(newRestaurant);
-            onCloseModal();
+            handleUpdatedRestaurants(newRestaurant);
+            handleCloseModal();
           }}
         >
           <FormItem>

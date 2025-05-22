@@ -1,8 +1,12 @@
 import { useState } from "react";
 import CategoryFilter from "./CategoryFilter.jsx";
 import RestaurantList from "./RestaurantList.jsx";
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext.jsx";
 
-function MainContent({ onClickedDetailModal, restaurants }) {
+function MainContent() {
+  const { handleClickedRestaurantInfo, restaurants } = useContext(AppContext);
+
   const [category, setCategory] = useState("전체");
 
   const handleCategoryChange = (newCategory) => {
@@ -21,7 +25,7 @@ function MainContent({ onClickedDetailModal, restaurants }) {
       />
       <RestaurantList
         restaurants={filteredRestaurants}
-        onRestaurantClick={onClickedDetailModal}
+        onRestaurantClick={handleClickedRestaurantInfo}
       />
     </>
   );
