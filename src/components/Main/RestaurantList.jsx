@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { selectedCategories } from "../../data/data";
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 
 const RestaurantListContainer = styled.section`
   display: flex;
@@ -63,11 +65,14 @@ const RestaurantDescription = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-function RestaurantList({ restaurants, onRestaurantClick }) {
+function RestaurantList() {
+  const { handleClickedRestaurantInfo, filteredRestaurants } =
+    useContext(AppContext);
+
   return (
     <RestaurantListContainer>
       <ul>
-        {restaurants.map((restaurant) => {
+        {filteredRestaurants.map((restaurant) => {
           const matchCategory = selectedCategories.find(
             (item) => item.category === restaurant.category
           );
@@ -75,7 +80,10 @@ function RestaurantList({ restaurants, onRestaurantClick }) {
             <Restaurant
               key={restaurant.id}
               onClick={() =>
-                onRestaurantClick(restaurant.name, restaurant.description)
+                handleClickedRestaurantInfo(
+                  restaurant.name,
+                  restaurant.description
+                )
               }
             >
               <RestaurantCategory>

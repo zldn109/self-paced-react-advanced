@@ -3,7 +3,6 @@ import Header from "./components/Header/Header";
 import MainContent from "./components/Main/MainContent";
 import AddRestaurantModal from "./components/Aside/AddRestaurantModal";
 import RestaurantDetailModal from "./components/Aside/RestaurantDetailModal";
-import { useState, useEffect } from "react";
 import { AppProvider } from "./contexts/AppContext";
 import { useContext } from "react";
 import { AppContext } from "./contexts/AppContext";
