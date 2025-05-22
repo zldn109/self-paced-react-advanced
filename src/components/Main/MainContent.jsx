@@ -1,6 +1,6 @@
-import { useState } from "react";
 import CategoryFilter from "./CategoryFilter.jsx";
 import RestaurantList from "./RestaurantList.jsx";
+import { useState } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext.jsx";
 
