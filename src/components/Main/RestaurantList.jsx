@@ -65,14 +65,13 @@ const RestaurantDescription = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-function RestaurantList() {
-  const { handleClickedRestaurantInfo, filteredRestaurants } =
-    useContext(AppContext);
+function RestaurantList({ restaurants }) {
+  const { handleClickedRestaurantInfo } = useContext(AppContext);
 
   return (
     <RestaurantListContainer>
       <ul>
-        {filteredRestaurants.map((restaurant) => {
+        {restaurants.map((restaurant) => {
           const matchCategory = selectedCategories.find(
             (item) => item.category === restaurant.category
           );

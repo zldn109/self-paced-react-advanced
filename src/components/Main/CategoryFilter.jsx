@@ -26,9 +26,7 @@ const RestaurantFilter = styled.select`
   padding: 8px;
 `;
 
-function CategoryFilter() {
-  const { category, handleCategoryChange } = useContext(AppContext);
-
+function CategoryFilter({ category, onChangeCategory }) {
   return (
     <RestaurantFilterContainer>
       <RestaurantFilter
@@ -36,7 +34,7 @@ function CategoryFilter() {
         id="category-filter"
         aria-label="음식점 카테고리 필터"
         value={category}
-        onChange={(event) => handleCategoryChange(event.target.value)}
+        onChange={(event) => onChangeCategory(event.target.value)}
       >
         {categories.map((cat) => (
           <option key={cat.id} value={cat.value}>

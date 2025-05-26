@@ -54,17 +54,6 @@ export function AppProvider({ children }) {
     setRestaurants((prev) => [...prev, newRestaurant]);
   };
 
-  const [category, setCategory] = useState("전체");
-
-  const handleCategoryChange = (newCategory) => {
-    setCategory(newCategory);
-  };
-
-  const filteredRestaurants =
-    category === "전체"
-      ? restaurants
-      : restaurants.filter((restaurant) => restaurant.category === category);
-
   return (
     <AppContext.Provider
       value={{
@@ -75,9 +64,6 @@ export function AppProvider({ children }) {
         handleUpdatedRestaurants,
         handleCloseModal,
         clickedRestaurantInfo,
-        category,
-        handleCategoryChange,
-        filteredRestaurants,
       }}
     >
       {children}
