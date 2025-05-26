@@ -8,6 +8,8 @@ export function AppProvider({ children }) {
     DETAIL: "detail",
   };
 
+  Object.freeze(MODAL_TYPES);
+
   const [modalTypeToOpen, setModalTypeToOpen] = useState(null);
 
   const openAddRestaurantModal = () => setModalTypeToOpen(MODAL_TYPES.ADD);
