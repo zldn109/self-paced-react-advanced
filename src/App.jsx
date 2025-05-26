@@ -3,12 +3,11 @@ import Header from "./components/Header/Header";
 import MainContent from "./components/Main/MainContent";
 import AddRestaurantModal from "./components/Aside/AddRestaurantModal";
 import RestaurantDetailModal from "./components/Aside/RestaurantDetailModal";
-import { AppProvider } from "./contexts/AppContext";
 import { useContext, useEffect } from "react";
 import { AppContext } from "./contexts/AppContext";
 
 function App() {
-  const { setRestaurants } = useContext(AppContext);
+  const { modalTypeToOpen, setRestaurants } = useContext(AppContext);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -42,21 +41,11 @@ function App() {
         <MainContent />
       </main>
       <aside>
-        <ModalRenderer onSubmitRestaurant={handleUpdatedRestaurants} />
+        {modalTypeToOpen === "add" && (
+          <AddRestaurantModal onSubmitRestaurant={handleUpdatedRestaurants} />
+        )}
+        {modalTypeToOpen === "detail" && <RestaurantDetailModal />}
       </aside>
-    </>
-  );
-}
-
-function ModalRenderer({ onSubmitRestaurant }) {
-  const { modalTypeToOpen } = useContext(AppContext);
-
-  return (
-    <>
-      {modalTypeToOpen === "add" && (
-        <AddRestaurantModal onSubmitRestaurant={onSubmitRestaurant} />
-      )}
-      {modalTypeToOpen === "detail" && <RestaurantDetailModal />}
     </>
   );
 }
