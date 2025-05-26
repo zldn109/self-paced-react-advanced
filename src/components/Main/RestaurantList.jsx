@@ -66,8 +66,17 @@ const RestaurantDescription = styled.p`
 `;
 
 function RestaurantList({ restaurants }) {
-  const { handleClickedRestaurantInfo } = useContext(AppContext);
+  const { setClickedRestaurantInfo, setModalTypeToOpen } =
+    useContext(AppContext);
 
+  const handleClickedRestaurantInfo = (name, description) => {
+    const restaurant = {
+      name,
+      description,
+    };
+    setClickedRestaurantInfo(restaurant);
+    setModalTypeToOpen("detail");
+  };
   return (
     <RestaurantListContainer>
       <ul>

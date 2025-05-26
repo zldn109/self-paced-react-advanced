@@ -35,7 +35,8 @@ const GnbButton = styled.button`
 `;
 
 function Header() {
-  const { openAddRestaurantModal } = useContext(AppContext);
+  const { setModalTypeToOpen } = useContext(AppContext);
+  const openAddRestaurantModal = () => setModalTypeToOpen("add");
 
   return (
     <Gnb>

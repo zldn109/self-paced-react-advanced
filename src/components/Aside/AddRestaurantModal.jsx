@@ -125,7 +125,9 @@ const Button = styled.button`
 `;
 
 function AddRestaurantModal() {
-  const { handleUpdatedRestaurants, handleCloseModal } = useContext(AppContext);
+  const { handleUpdatedRestaurants, setModalTypeToOpen } =
+    useContext(AppContext);
+  const handleCloseModal = () => setModalTypeToOpen(null);
 
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");

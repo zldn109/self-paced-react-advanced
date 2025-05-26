@@ -7,33 +7,21 @@ export function AppProvider({ children }) {
     ADD: "add",
     DETAIL: "detail",
   };
-
   Object.freeze(MODAL_TYPES);
 
   const [modalTypeToOpen, setModalTypeToOpen] = useState(null);
-
-  const openAddRestaurantModal = () => setModalTypeToOpen(MODAL_TYPES.ADD);
-
-  const handleCloseModal = () => setModalTypeToOpen(null);
-
   const [clickedRestaurantInfo, setClickedRestaurantInfo] = useState(null);
-
-  const handleClickedRestaurantInfo = (name, description) => {
-    const restaurant = {
-      name,
-      description,
-    };
-    setClickedRestaurantInfo(restaurant);
-    setModalTypeToOpen(MODAL_TYPES.DETAIL);
-  };
-
   const [restaurants, setRestaurants] = useState([]);
 
-  const fetchRestaurants = async () => {
-    const response = await fetch("http://localhost:3000/restaurants");
-    const data = await response.json();
-    setRestaurants(data);
-  };
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      const response = await fetch("http://localhost:3000/restaurants");
+      const data = await response.json();
+      setRestaurants(data);
+    };
+
+    fetchRestaurants();
+  }, []);
 
   const addNewRestaurant = async (restaurant) => {
     const response = await fetch("http://localhost:3000/restaurants", {
@@ -45,10 +33,6 @@ export function AppProvider({ children }) {
     return newRestaurant;
   };
 
-  useEffect(() => {
-    fetchRestaurants();
-  }, []);
-
   const handleUpdatedRestaurants = async (restaurant) => {
     const newRestaurant = await addNewRestaurant(restaurant);
     setRestaurants((prev) => [...prev, newRestaurant]);
@@ -58,12 +42,11 @@ export function AppProvider({ children }) {
     <AppContext.Provider
       value={{
         modalTypeToOpen,
-        openAddRestaurantModal,
-        handleClickedRestaurantInfo,
+        setModalTypeToOpen,
+        clickedRestaurantInfo,
+        setClickedRestaurantInfo,
         restaurants,
         handleUpdatedRestaurants,
-        handleCloseModal,
-        clickedRestaurantInfo,
       }}
     >
       {children}

@@ -74,7 +74,8 @@ const TextBody = styled.p`
 `;
 
 function RestaurantDetailModal() {
-  const { clickedRestaurantInfo, handleCloseModal } = useContext(AppContext);
+  const { clickedRestaurantInfo, setModalTypeToOpen } = useContext(AppContext);
+  const handleCloseModal = () => setModalTypeToOpen(null);
 
   return (
     <ModalWrapper>
