@@ -124,9 +124,8 @@ const Button = styled.button`
     `}
 `;
 
-function AddRestaurantModal() {
-  const { handleUpdatedRestaurants, setModalTypeToOpen } =
-    useContext(AppContext);
+function AddRestaurantModal({ onSubmitRestaurant }) {
+  const { setModalTypeToOpen } = useContext(AppContext);
   const handleCloseModal = () => setModalTypeToOpen(null);
 
   const [category, setCategory] = useState("");
@@ -149,7 +148,7 @@ function AddRestaurantModal() {
               description,
             };
 
-            handleUpdatedRestaurants(newRestaurant);
+            onSubmitRestaurant(newRestaurant);
             handleCloseModal();
           }}
         >
