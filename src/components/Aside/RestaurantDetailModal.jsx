@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
   clickedRestaurantInfoState,

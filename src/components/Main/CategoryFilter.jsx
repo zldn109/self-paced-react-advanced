@@ -1,7 +1,5 @@
 import { categories } from "../../data/data.js";
 import styled from "styled-components";
-import { useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
 
 const RestaurantFilterContainer = styled.section`
   display: flex;

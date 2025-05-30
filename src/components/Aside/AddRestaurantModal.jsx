@@ -1,7 +1,5 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
-import { useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
 import { useSetRecoilState } from "recoil";
 import { modalTypeState } from "../../contexts/AppState";
 

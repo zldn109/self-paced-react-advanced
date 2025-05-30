@@ -1,8 +1,7 @@
 import { useRecoilValue } from "recoil";
-import { AppContext } from "../../contexts/AppContext.jsx";
 import CategoryFilter from "./CategoryFilter.jsx";
 import RestaurantList from "./RestaurantList.jsx";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { restaurantsState } from "../../contexts/AppState.jsx";
 
 function MainContent() {

@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { selectedCategories } from "../../data/data";
-import { useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
 import { useSetRecoilState } from "recoil";
 import {
   clickedRestaurantInfoState,

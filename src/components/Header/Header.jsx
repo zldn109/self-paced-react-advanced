@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { AppContext } from "../../contexts/AppContext";
-import { useContext } from "react";
 import { useRecoilState } from "recoil";
 // import { modalTypeState } from "./contexts/AppAtom";
 
