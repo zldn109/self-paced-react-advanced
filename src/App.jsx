@@ -3,8 +3,8 @@ import Header from "./components/Header/Header";
 import MainContent from "./components/Main/MainContent";
 import AddRestaurantModal from "./components/Aside/AddRestaurantModal";
 import RestaurantDetailModal from "./components/Aside/RestaurantDetailModal";
-import { useState, useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useEffect } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   clickedRestaurantInfoState,
   modalTypeState,
@@ -18,7 +18,6 @@ function App() {
   };
   Object.freeze(MODAL_TYPES);
 
-  // const [modalTypeToOpen, setModalTypeToOpen] = useState(null);
   const [modalTypeToOpen, setModalTypeToOpen] = useRecoilState(modalTypeState);
   const handleCloseModal = () => setModalTypeToOpen(null);
 
@@ -34,7 +33,7 @@ function App() {
     setModalTypeToOpen(MODAL_TYPES.DETAIL);
   };
 
-  const [restaurants, setRestaurants] = useRecoilState(restaurantsState);
+  const setRestaurants = useSetRecoilState(restaurantsState);
 
   const fetchRestaurants = async () => {
     const response = await fetch("http://localhost:3000/restaurants");
@@ -66,10 +65,7 @@ function App() {
         openAddRestaurantModal={() => setModalTypeToOpen(MODAL_TYPES.ADD)}
       />
       <main>
-        <MainContent
-          onClickedDetailModal={handleClickedRestaurantInfo}
-          // restaurants={restaurants}
-        />
+        <MainContent onClickedDetailModal={handleClickedRestaurantInfo} />
       </main>
       <aside>
         {modalTypeToOpen === "add" && (

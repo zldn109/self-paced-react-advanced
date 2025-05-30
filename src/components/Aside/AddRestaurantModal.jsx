@@ -125,7 +125,6 @@ const Button = styled.button`
 `;
 
 function AddRestaurantModal({ onSubmitRestaurant }) {
-  // const { setModalTypeToOpen } = useContext(AppContext);
   const setModalTypeToOpen = useSetRecoilState(modalTypeState);
   const handleCloseModal = () => setModalTypeToOpen(null);
 
