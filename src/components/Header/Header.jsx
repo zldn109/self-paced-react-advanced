@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { AppContext } from "../../contexts/AppContext";
 import { useContext } from "react";
+import { useRecoilState } from "recoil";
+// import { modalTypeState } from "./contexts/AppAtom";
 
 const Gnb = styled.header`
   display: flex;
@@ -34,9 +36,10 @@ const GnbButton = styled.button`
   }
 `;
 
-function Header() {
-  const { setModalTypeToOpen } = useContext(AppContext);
-  const openAddRestaurantModal = () => setModalTypeToOpen("add");
+function Header({ openAddRestaurantModal }) {
+  // const { setModalTypeToOpen } = useContext(AppContext);
+  // const [modalTypeToOpen, setModalTypeToOpen] = useRecoilState(modalTypeState);
+  // const openAddRestaurantModal = () => setModalTypeToOpen("add");
 
   return (
     <Gnb>

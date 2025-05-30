@@ -1,6 +1,19 @@
-// import React, { createContext, useState, useEffect } from "react";
+import { atom } from "recoil";
 
-// export const AppContext = createContext();
+export const modalTypeState = atom({
+  key: "modalTypeState",
+  default: null,
+});
+
+export const clickedRestaurantInfoState = atom({
+  key: "clickedRestaurantInfoState",
+  default: null,
+});
+
+export const restaurantsState = atom({
+  key: "restaurantsState",
+  default: [],
+});
 
 // export function AppProvider({ children }) {
 //   const MODAL_TYPES = {
@@ -9,15 +22,14 @@
 //   };
 //   Object.freeze(MODAL_TYPES);
 
-//   const [modalTypeToOpen, setModalTypeToOpen] = useState(null);
-//   const [clickedRestaurantInfo, setClickedRestaurantInfo] = useState(null);
-//   const [restaurants, setRestaurants] = useState([]);
+//
+//
 
 //   return (
 //     <AppContext.Provider
 //       value={{
-//         // modalTypeToOpen,
-//         // setModalTypeToOpen,
+//         modalTypeToOpen,
+//         setModalTypeToOpen,
 //         clickedRestaurantInfo,
 //         setClickedRestaurantInfo,
 //         restaurants,

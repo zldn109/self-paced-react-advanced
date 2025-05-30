@@ -2,6 +2,8 @@ import { useState } from "react";
 import styled, { css } from "styled-components";
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
+import { useSetRecoilState } from "recoil";
+import { modalTypeState } from "../../contexts/AppState";
 
 const ModalWrapper = styled.div`
   display: block;
@@ -125,7 +127,8 @@ const Button = styled.button`
 `;
 
 function AddRestaurantModal({ onSubmitRestaurant }) {
-  const { setModalTypeToOpen } = useContext(AppContext);
+  // const { setModalTypeToOpen } = useContext(AppContext);
+  const setModalTypeToOpen = useSetRecoilState(modalTypeState);
   const handleCloseModal = () => setModalTypeToOpen(null);
 
   const [category, setCategory] = useState("");

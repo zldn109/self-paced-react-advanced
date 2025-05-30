@@ -1,16 +1,17 @@
+import { useRecoilValue } from "recoil";
 import { AppContext } from "../../contexts/AppContext.jsx";
 import CategoryFilter from "./CategoryFilter.jsx";
 import RestaurantList from "./RestaurantList.jsx";
 import { useContext, useState } from "react";
+import { restaurantsState } from "../../contexts/AppState.jsx";
 
 function MainContent() {
   const [category, setCategory] = useState("전체");
-
   const handleCategoryChange = (newCategory) => {
     setCategory(newCategory);
   };
 
-  const { restaurants } = useContext(AppContext);
+  const restaurants = useRecoilValue(restaurantsState);
   const filteredRestaurants =
     category === "전체"
       ? restaurants

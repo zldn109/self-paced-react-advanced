@@ -2,6 +2,11 @@ import styled from "styled-components";
 import { selectedCategories } from "../../data/data";
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
+import { useSetRecoilState } from "recoil";
+import {
+  clickedRestaurantInfoState,
+  modalTypeState,
+} from "../../contexts/AppState";
 
 const RestaurantListContainer = styled.section`
   display: flex;
@@ -66,8 +71,10 @@ const RestaurantDescription = styled.p`
 `;
 
 function RestaurantList({ restaurants }) {
-  const { setClickedRestaurantInfo, setModalTypeToOpen } =
-    useContext(AppContext);
+  const setClickedRestaurantInfo = useSetRecoilState(
+    clickedRestaurantInfoState
+  );
+  const setModalTypeToOpen = useSetRecoilState(modalTypeState);
 
   const handleClickedRestaurantInfo = (name, description) => {
     const restaurant = {
