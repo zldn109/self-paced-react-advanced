@@ -1,16 +1,12 @@
 import "./App.css";
 import Header from "./components/Header/Header";
+import CategoryFilter from "./components/Main/CategoryFilter";
+import RestaurantList from "./components/Main/RestaurantList";
 import AddRestaurantModal from "./components/Aside/AddRestaurantModal";
 import RestaurantDetailModal from "./components/Aside/RestaurantDetailModal";
 import { useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import {
-  clickedRestaurantInfoState,
-  modalTypeState,
-  restaurantsState,
-} from "./store/AppAtom";
-import CategoryFilter from "./components/Main/CategoryFilter";
-import RestaurantList from "./components/Main/RestaurantList";
+import { modalTypeState, restaurantsState } from "./store/AppAtom";
 
 function App() {
   const MODAL_TYPES = {
@@ -20,20 +16,6 @@ function App() {
   Object.freeze(MODAL_TYPES);
 
   const [modalTypeToOpen, setModalTypeToOpen] = useRecoilState(modalTypeState);
-  const handleCloseModal = () => setModalTypeToOpen(null);
-
-  const [clickedRestaurantInfo, setClickedRestaurantInfo] = useRecoilState(
-    clickedRestaurantInfoState
-  );
-  const handleClickedRestaurantInfo = (name, description) => {
-    const restaurant = {
-      name,
-      description,
-    };
-    setClickedRestaurantInfo(restaurant);
-    setModalTypeToOpen(MODAL_TYPES.DETAIL);
-  };
-
   const setRestaurants = useSetRecoilState(restaurantsState);
 
   const fetchRestaurants = async () => {
@@ -41,6 +23,10 @@ function App() {
     const data = await response.json();
     setRestaurants(data);
   };
+
+  useEffect(() => {
+    fetchRestaurants();
+  }, []);
 
   const addNewRestaurant = async (restaurant) => {
     const response = await fetch("http://localhost:3000/restaurants", {
@@ -52,14 +38,11 @@ function App() {
     return newRestaurant;
   };
 
-  useEffect(() => {
-    fetchRestaurants();
-  }, []);
-
   const handleUpdatedRestaurants = async (restaurant) => {
     const newRestaurant = await addNewRestaurant(restaurant);
     setRestaurants((prev) => [...prev, newRestaurant]);
   };
+
   return (
     <>
       <Header
@@ -71,18 +54,9 @@ function App() {
       </main>
       <aside>
         {modalTypeToOpen === "add" && (
-          <AddRestaurantModal
-            onSubmitRestaurant={handleUpdatedRestaurants}
-            onCloseModal={handleCloseModal}
-          />
+          <AddRestaurantModal onSubmitRestaurant={handleUpdatedRestaurants} />
         )}
-        {modalTypeToOpen === "detail" && (
-          <RestaurantDetailModal
-            restaurantName={clickedRestaurantInfo.name}
-            restaurantDescription={clickedRestaurantInfo.description}
-            onCloseModal={handleCloseModal}
-          />
-        )}
+        {modalTypeToOpen === "detail" && <RestaurantDetailModal />}
       </aside>
     </>
   );

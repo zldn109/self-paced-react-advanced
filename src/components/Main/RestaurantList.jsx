@@ -71,12 +71,10 @@ const RestaurantDescription = styled.p`
 
 function RestaurantList() {
   const restaurants = useRecoilValue(filteredRestaurantsState);
-
+  const setModalTypeToOpen = useSetRecoilState(modalTypeState);
   const setClickedRestaurantInfo = useSetRecoilState(
     clickedRestaurantInfoState
   );
-  const setModalTypeToOpen = useSetRecoilState(modalTypeState);
-
   const handleClickedRestaurantInfo = (name, description) => {
     const restaurant = {
       name,
@@ -85,6 +83,7 @@ function RestaurantList() {
     setClickedRestaurantInfo(restaurant);
     setModalTypeToOpen("detail");
   };
+
   return (
     <RestaurantListContainer>
       <ul>
