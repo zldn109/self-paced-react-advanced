@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { selectedCategories } from "../../data/data";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
   clickedRestaurantInfoState,
+  filteredRestaurantsState,
   modalTypeState,
-} from "../../contexts/AppState";
+} from "../../store/AppAtom";
 
 const RestaurantListContainer = styled.section`
   display: flex;
@@ -68,7 +69,9 @@ const RestaurantDescription = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-function RestaurantList({ restaurants }) {
+function RestaurantList() {
+  const restaurants = useRecoilValue(filteredRestaurantsState);
+
   const setClickedRestaurantInfo = useSetRecoilState(
     clickedRestaurantInfoState
   );

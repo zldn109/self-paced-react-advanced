@@ -9,7 +9,7 @@ import {
   clickedRestaurantInfoState,
   modalTypeState,
   restaurantsState,
-} from "./contexts/AppState";
+} from "./store/AppAtom";
 
 function App() {
   const MODAL_TYPES = {

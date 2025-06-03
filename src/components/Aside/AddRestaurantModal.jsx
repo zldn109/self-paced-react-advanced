@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
 import { useSetRecoilState } from "recoil";
-import { modalTypeState } from "../../contexts/AppState";
+import { modalTypeState } from "../../store/AppAtom";
 
 const ModalWrapper = styled.div`
   display: block;
