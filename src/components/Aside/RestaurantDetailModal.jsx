@@ -3,7 +3,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
   clickedRestaurantInfoState,
   modalTypeState,
-} from "../../contexts/AppState";
+} from "../../store/AppAtom";
 
 const ModalWrapper = styled.div`
   display: block;
