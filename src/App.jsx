@@ -1,6 +1,5 @@
 import "./App.css";
 import Header from "./components/Header/Header";
-import MainContent from "./components/Main/MainContent";
 import AddRestaurantModal from "./components/Aside/AddRestaurantModal";
 import RestaurantDetailModal from "./components/Aside/RestaurantDetailModal";
 import { useEffect } from "react";
@@ -10,6 +9,8 @@ import {
   modalTypeState,
   restaurantsState,
 } from "./store/AppAtom";
+import CategoryFilter from "./components/Main/CategoryFilter";
+import RestaurantList from "./components/Main/RestaurantList";
 
 function App() {
   const MODAL_TYPES = {
@@ -65,7 +66,8 @@ function App() {
         openAddRestaurantModal={() => setModalTypeToOpen(MODAL_TYPES.ADD)}
       />
       <main>
-        <MainContent onClickedDetailModal={handleClickedRestaurantInfo} />
+        <CategoryFilter />
+        <RestaurantList />
       </main>
       <aside>
         {modalTypeToOpen === "add" && (
