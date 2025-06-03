@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useSetRecoilState } from "recoil";
+import { modalTypeState } from "../../store/AppAtom";
 
 const Gnb = styled.header`
   display: flex;
@@ -32,14 +34,15 @@ const GnbButton = styled.button`
   }
 `;
 
-function Header({ openAddRestaurantModal }) {
+function Header() {
+  const setModalTypeToOpen = useSetRecoilState(modalTypeState);
   return (
     <Gnb>
       <GnbTitle>점심 뭐 먹지</GnbTitle>
       <GnbButton
         type="button"
         aria-label="음식점 추가"
-        onClick={openAddRestaurantModal}
+        onClick={() => setModalTypeToOpen(true)}
       >
         <img src="/templates/add-button.png" alt="음식점 추가" />
       </GnbButton>

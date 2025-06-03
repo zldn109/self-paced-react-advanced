@@ -5,7 +5,7 @@ import RestaurantList from "./components/Main/RestaurantList";
 import AddRestaurantModal from "./components/Aside/AddRestaurantModal";
 import RestaurantDetailModal from "./components/Aside/RestaurantDetailModal";
 import { useEffect } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { modalTypeState, restaurantsState } from "./store/AppAtom";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
   };
   Object.freeze(MODAL_TYPES);
 
-  const [modalTypeToOpen, setModalTypeToOpen] = useRecoilState(modalTypeState);
+  const modalTypeToOpen = useRecoilValue(modalTypeState);
   const setRestaurants = useSetRecoilState(restaurantsState);
 
   const fetchRestaurants = async () => {
@@ -45,9 +45,7 @@ function App() {
 
   return (
     <>
-      <Header
-        openAddRestaurantModal={() => setModalTypeToOpen(MODAL_TYPES.ADD)}
-      />
+      <Header />
       <main>
         <CategoryFilter />
         <RestaurantList />
